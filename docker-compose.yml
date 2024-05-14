@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  fetcher:
+    container_name: fetcher
+    restart: on-failure
+    env_file:
+      - .env
+    build:
+      context: Docker/fetcher
+      dockerfile: Dockerfile
+    volumes:
+      - ./images:/images
+  
+  retriever:
+    container_name: retriever
+    restart: on-failure
+    env_file:
+      - .env
+    build:
+      context: Docker/retriever
+      dockerfile: Dockerfile
+    volumes:
+      - ${EXPORTED_PATH}:/app/exported
+      - ./JSON_Images:/json_images
+
+
