@@ -23,6 +23,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ${EXPORTED_PATH}:/app/exported
-      - ./JSON_Images:/json_images
+      - ./JSON_images:/json_images
 
 
