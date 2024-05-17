@@ -48,7 +48,7 @@ docker-compose up -d fetcher
 ```
 
 ### Retriever
-This assumes you are using [Label Studio](https://labelstud.io/) for labelling and that you have already imported and labelled your images.
+This assumes you are using [Label Studio](https://labelstud.io/) for labelling and that you have already uploaded and labelled your images.
 
 On **Label Studio**, in your project, you can find the *`PROJECT_ID`* in your browser URL. The *`ACCESS_TOKEN`* is visible in the "Account & Settings" tab (top right corner).
 
