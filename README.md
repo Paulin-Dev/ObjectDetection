@@ -39,6 +39,8 @@ Open a new terminal and follow these steps to set up the project:
 
 
 ## 🚀 Usage 
+> In Docker Desktop, you can view the containers with their status and logs.
+
 > NB: *`VARIABLE`* means that this variable can be customized in the **.env** file.
 
 ### Fetcher
