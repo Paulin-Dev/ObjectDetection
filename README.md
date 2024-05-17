@@ -42,7 +42,7 @@ Open a new terminal and follow these steps to set up the project:
 > NB: *`VARIABLE`* means that this variable can be customized in the **.env** file.
 
 ### Fetcher
-You can fetch images *`LOOP`* times, from a *`URL`*, every *`SLEEP_TIME`* seconds using the following command:
+You can fetch *`LOOP`* images, from a *`URL`*, every *`SLEEP_TIME`* seconds using the following command:
 ```bash
 docker-compose up -d fetcher
 ```
