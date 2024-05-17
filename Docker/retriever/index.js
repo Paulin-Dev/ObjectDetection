@@ -72,9 +72,9 @@ switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
 async function json() {
     const data = await readJsonFile('exported');
     let counter = 0;
-    data.forEach(async (item) => {
+    data.forEach((item) => {
         setTimeout(downloadImage, counter, item.file_upload, item.project, '/json_images')
-        counter += process.env.REQUEST_INTERVAL;
+        counter += parseInt(process.env.REQUEST_INTERVAL);
     });
 }
 
@@ -86,7 +86,7 @@ async function coco() {
     data?.images.forEach((image) => {
         const filename = image.file_name.substring(image.file_name.indexOf('/') + 1);
         setTimeout(downloadImage, counter, filename, process.env.PROJECT_ID, 'exported/images');
-        counter += process.env.REQUEST_INTERVAL;
+        counter += parseInt(process.env.REQUEST_INTERVAL);
     });
 }
 
@@ -99,6 +99,7 @@ async function yolo() {
         const index = item.lastIndexOf('.');
         if(item.substring(index) == '.txt') {
             setTimeout(downloadImage, counter, `${item.substring(0, index)}.jpg`, process.env.PROJECT_ID, 'exported/images');
+            counter += parseInt(process.env.REQUEST_INTERVAL);
         }
     });
 }
