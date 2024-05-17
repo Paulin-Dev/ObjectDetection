@@ -47,7 +47,7 @@ async function downloadImage(filename, project_id, path) {
 }
 
 
-// Exported format
+// Call the appropriate function based on the exported format
 switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
 
     case 'json':
@@ -91,7 +91,7 @@ async function coco() {
 }
 
 
-// Download images from the YOLO file
+// Download images from the YOLO files
 async function yolo() {
     const data = await readdir('exported/labels');
     let counter = 0;
