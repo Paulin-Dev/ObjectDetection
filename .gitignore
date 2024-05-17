@@ -34,3 +34,6 @@ vscode
 # Images directories
 images
 JSON_images
+
+# Exported files
+*.json
