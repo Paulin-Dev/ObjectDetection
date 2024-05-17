@@ -22,20 +22,20 @@ This repository contains scripts and resources aimed at developing an AI-based s
 Open a new terminal and follow these steps to set up the project:
 
 1. **Clone the repository**  
-  ```bash
-  git clone https://github.com/Paulin-Dev/ObjectDetection.git
-  ```
+    ```bash
+    git clone https://github.com/Paulin-Dev/ObjectDetection.git
+    ```
 
 2. **Navigate to the project directory**  
-  ```bash
-  cd ObjectDetection
-  ```
+    ```bash
+    cd ObjectDetection
+    ```
 
 3. **Clone the environment file**  
-  ```bash
-  cp .env.example .env
-  ```
-  > In the next section, you will have a better understanding of each variable and its purpose, allowing you to customize the configuration.
+    ```bash
+    cp .env.example .env
+    ```
+    > In the next section, you will have a better understanding of each variable and its purpose, allowing you to customize the configuration.
 
 
 ## 🚀 Usage 
