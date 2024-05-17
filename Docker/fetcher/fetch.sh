@@ -21,7 +21,7 @@ download () {
 
     wget -O "$filename" "$URL"
 
-    # Check if the file size if bigger than 10ko
+    # Check if the file size is bigger than 10ko
     fileSize=$(exiftool -s -s -s -n -FileSize "$filename")
     if [ "$fileSize" -gt 10000 ]; then
 
