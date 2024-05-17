@@ -3,6 +3,10 @@ import { readFile, readdir } from 'fs/promises';
 import { Readable } from 'stream';
 
 
+const BASE_URL = 'https://app.heartex.com/storage-data/uploaded/?filepath=upload';
+
+
+// Read JSON file and return the parsed data
 async function readJsonFile(filename) {
     try {
         const data = await readFile(filename, 'utf8');
@@ -12,9 +16,9 @@ async function readJsonFile(filename) {
     }
 }
 
-
+// Download image from the given URL
 async function downloadImage(filename, project_id, path) {
-    const url = `https://app.heartex.com/storage-data/uploaded/?filepath=upload/${project_id}/${filename}`;
+    const url = `${BASE_URL}/${project_id}/${filename}`;
     try {
         const response = await fetch(url, { headers: { Authorization: `Token ${process.env.ACCESS_TOKEN}` }});
         if (response.ok && response.body) {
@@ -29,7 +33,7 @@ async function downloadImage(filename, project_id, path) {
    
 }
 
-
+// Exported format
 switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
 
     case 'json':
@@ -49,7 +53,7 @@ switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
 
 }
 
-
+// Download images from the JSON file
 async function json() {
     const data = await readJsonFile('exported');
     data.forEach((item) => {
@@ -57,7 +61,7 @@ async function json() {
     });
 }
 
-
+// Download images from the COCO file
 async function coco() {
     const data = await readJsonFile('exported/result.json');
     data?.images.forEach((image) => {
@@ -66,7 +70,7 @@ async function coco() {
     });
 }
 
-
+// Download images from the YOLO file
 async function yolo() {
     const data = await readdir('exported/labels'); 
     data.forEach((item) => {
