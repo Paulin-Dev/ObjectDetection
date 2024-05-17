@@ -16,8 +16,21 @@ async function readJsonFile(filename) {
     }
 }
 
+
+// Check if the file exists
+function fileExists(path) {
+    try {
+        return fs.existsSync(path);
+    } catch (err) {
+        return false;
+    }
+}
+
+
 // Download image from the given URL
 async function downloadImage(filename, project_id, path) {
+    if (fileExists(`${path}/${filename}`)) { return; }
+
     const url = `${BASE_URL}/${project_id}/${filename}`;
     try {
         const response = await fetch(url, { headers: { Authorization: `Token ${process.env.ACCESS_TOKEN}` }});
@@ -25,13 +38,14 @@ async function downloadImage(filename, project_id, path) {
             const fileStream = fs.createWriteStream(`${path}/${filename}`);
             Readable.fromWeb(response.body).pipe(fileStream);
         } else {
-            console.error(response.status, response.statusText)
+            console.error(response.status, response.statusText);
         }
     } catch (err) {
         console.error(err);
     }
    
 }
+
 
 // Exported format
 switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
@@ -53,30 +67,38 @@ switch (process.env.EXPORTED_FORMAT.toLowerCase()) {
 
 }
 
+
 // Download images from the JSON file
 async function json() {
     const data = await readJsonFile('exported');
-    data.forEach((item) => {
-        downloadImage(item.file_upload, item.project, '/json_images');
+    let counter = 0;
+    data.forEach(async (item) => {
+        setTimeout(downloadImage, counter, item.file_upload, item.project, '/json_images')
+        counter += process.env.REQUEST_INTERVAL;
     });
 }
+
 
 // Download images from the COCO file
 async function coco() {
     const data = await readJsonFile('exported/result.json');
+    let counter = 0;
     data?.images.forEach((image) => {
         const filename = image.file_name.substring(image.file_name.indexOf('/') + 1);
-        downloadImage(filename, process.env.PROJECT_ID, 'exported/images');
+        setTimeout(downloadImage, counter, filename, process.env.PROJECT_ID, 'exported/images');
+        counter += process.env.REQUEST_INTERVAL;
     });
 }
 
+
 // Download images from the YOLO file
 async function yolo() {
-    const data = await readdir('exported/labels'); 
+    const data = await readdir('exported/labels');
+    let counter = 0;
     data.forEach((item) => {
         const index = item.lastIndexOf('.');
         if(item.substring(index) == '.txt') {
-            downloadImage(item.substring(0, index) + '.jpg', process.env.PROJECT_ID, 'exported/images');
+            setTimeout(downloadImage, counter, `${item.substring(0, index)}.jpg`, process.env.PROJECT_ID, 'exported/images');
         }
     });
 }
