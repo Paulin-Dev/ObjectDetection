@@ -24,8 +24,16 @@ download () {
     # Check if the file size if bigger than 10ko
     fileSize=$(exiftool -s -s -s -n -FileSize "$filename")
     if [ "$fileSize" -gt 10000 ]; then
+
         createDate=$(exiftool -s -s -s -d "%Y%m%d%H%M%S" -CreateDate "$filename")
-        mv -n "$filename" "/images/$createDate.jpg"
+
+        # Check if file already exists (=same image), if so, retry 10s later
+        if [ -f "/images/$createDate.jpg" ]; then
+            retry
+        else
+            mv -n "$filename" "/images/$createDate.jpg"
+        fi
+
     else
         retry
     fi
