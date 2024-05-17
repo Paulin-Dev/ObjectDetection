@@ -16,7 +16,7 @@ This repository contains scripts and resources aimed at developing an AI-based s
 
 ## ⚙️ Installation 
 
-> You first need to have **Docker Compose** installed.  
+> You first need to have **Docker Compose** installed (make sure the Docker daemon is running).  
 > The easiest and recommended way is to install Docker Desktop. Refer to the [Docker documentation](https://docs.docker.com/get-docker/).
 
 Open a new terminal and follow these steps to set up the project:
