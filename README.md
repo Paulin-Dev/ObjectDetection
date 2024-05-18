@@ -61,7 +61,8 @@ You can now retrieve your labelled images using the following command:
 ```bash
 docker-compose up -d retriever
 ```
-> NB: Change the *`REQUEST_INTERVAL`* if you are being rate limited.
+> NB: Change the *`REQUEST_INTERVAL`* if you are being rate limited.  
+> Images will be downloaded to the "JSON_images" directory at the project's root for JSON format, and to the "images" directory within exported directories for COCO and YOLO formats.
 
 ## 🤝 Contributing 
 Guidelines for contributing to the project can be found in the [CONTRIBUTING.md](https://github.com/Paulin-Dev/ObjectDetection/blob/main/docs/CONTRIBUTING.md) file.
