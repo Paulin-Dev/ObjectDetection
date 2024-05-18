@@ -41,7 +41,7 @@ Open a new terminal and follow these steps to set up the project:
 ## 🚀 Usage 
 > In Docker Desktop, you can view the containers with their status and logs.
 
-> NB: *`VARIABLE`* means that this variable can be customized in the **.env** file.
+> ❗NB:  *`VARIABLE`* means that this variable can be customized in the **.env** file.
 
 ### Fetcher
 You can fetch *`LOOP`* images, from a *`URL`*, every *`SLEEP_TIME`* seconds using the following command:
@@ -64,4 +64,4 @@ docker-compose up -d retriever
 > NB: Change the *`REQUEST_INTERVAL`* if you are being rate limited.
 
 ## 🤝 Contributing 
-Guidelines for contributing to the project can be found in the `docs/CONTRIBUTING.md` file.
+Guidelines for contributing to the project can be found in the [CONTRIBUTING.md](https://github.com/Paulin-Dev/ObjectDetection/blob/main/docs/CONTRIBUTING.md) file.
