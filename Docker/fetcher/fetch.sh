@@ -40,10 +40,17 @@ download () {
 }
 
 
-for _ in $(seq 1 "$LOOP"); do
+if [ "$LOOP" -eq -1 ]; then
+    while true; do
+        download
+        rm -f "$filename"
+        sleep "$SLEEP_TIME"
+    done
+else
+    for _ in $(seq 1 "$LOOP"); do
+        download
+        rm -f "$filename"
+        sleep "$SLEEP_TIME"
+    done
+fi
 
-    download
-    rm -f "$filename"
-    sleep "$SLEEP_TIME"
-
-done
