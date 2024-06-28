@@ -4,7 +4,7 @@ RUN apt update && apt install -y wget libimage-exiftool-perl
 
 WORKDIR /app
 
-ADD fetch.sh .
+COPY fetch.sh .
 
 RUN chmod +x fetch.sh
 
