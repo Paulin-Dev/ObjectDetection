@@ -12,7 +12,8 @@ This repository contains scripts and resources aimed at developing an AI-based s
 ## ✨ Features
 - Fetching dated images from an online camera every few seconds.
 - Retrieving images labelled on **Label Studio** from an exported file (different formats supported: JSON, COCO and YOLO).
-- ...
+- Analysing images using different object detection models (YOLOv10, Faster R-CNN, SSD, Haar Cascade Classifier, MMOD).
+- Displaying the results on a dashboard with multiple plots and filters.
 
 
 ## ⚙️ Installation 
