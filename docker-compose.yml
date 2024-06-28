@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
 
   fetcher:
@@ -24,5 +22,27 @@ services:
     volumes:
       - ${EXPORTED_PATH}:/app/exported
       - ./JSON_images:/json_images
+  
+  object-detector:
+    container_name: object-detector
+    restart: on-failure
+    build:
+      context: Docker/objectDetector
+      dockerfile: Dockerfile
+    volumes:
+      - ./images:/images
+      - ./results:/app/results
+  
+  dashboard:
+    container_name: dashboard
+    restart: on-failure
+    build:
+      context: Docker/dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./images:/images
+      - ./results:/app/results
 
 
