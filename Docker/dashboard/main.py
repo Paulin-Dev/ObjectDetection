@@ -52,6 +52,10 @@ def main():
     st.markdown('###')
     
     df = load_data()
+    if df.empty:
+        st.error('No data available (yet)')
+        time.sleep(10)
+        st.rerun()
 
     st.sidebar.title('Filters')
     
