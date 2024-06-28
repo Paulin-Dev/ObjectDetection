@@ -40,7 +40,10 @@ def cleanupImages() -> None:
     global analyzed_images
     for file_path in analyzed_images:
         if file_path != analyzed_images[-1]:
-            remove(file_path)
+            try:
+                remove(file_path)
+            except Exception as e:
+                print(f'Error: {e}')
     analyzed_images = [analyzed_images[-1]]
             
 
