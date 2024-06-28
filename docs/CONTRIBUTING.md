@@ -8,6 +8,8 @@ Thank you for considering contributing to this project! 🙌
 - [Services](#%EF%B8%8F-services)
   - [Fetcher](#fetcher)
   - [Retriever](#retriever)
+  - [Object Detector](#object-detector)
+  - [Dashboard](#dashboard)
 - [Reporting Bugs](#-reporting-bugs)
 - [Suggesting Features](#-suggesting-features)
 - [Submitting Code Changes](#-submitting-code-changes)
@@ -56,6 +58,26 @@ JavaScript script that reads exported files from Label Studio and uses the Label
 
 *NodeJS image with no additional packages.*
 
+### Object Detector
+Python script that uses the Mask R-CNN model to detect objects in images.
+
+- Has many utilities to preprocess the images and post-process the results.
+- Needs to have a volume to store data on the host machine.
+
+*Pytorch image with the following linux packages:*
+```bash
+libgl1-mesa-glx
+libglib2.0-0
+```
+*Also needs packages from the requirements.txt file.*
+
+### Dashboard
+Streamlit web application with filters to display metrics and graphs.
+
+- Uses the data stored in 'data.json' file in the results directory.
+- Needs to have a volume to access the data on the host machine.
+
+*Python 3.8-slim image with packages from the requirements.txt file.*
 
 
 ## 🐞 Reporting Bugs

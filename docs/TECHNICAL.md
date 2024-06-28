@@ -12,9 +12,14 @@ https://labelyourdata.com/articles/object-detection-metrics -->
 
     IoU is used to determine if a prediction is a true positive or a false positive based on a threshold (commonly 0.5).
 
+- ### TP, FP, FN, TN
+
+    TP refers to correctly identified objects, FP refers to incorrectly identified objects, and FN refers to missed objects. TN is not commonly used in object detection.
+    
+
 - ### Precision
 
-    Measures the accuracy o f the positive predictions.  
+    Measures the accuracy of the positive predictions.  
 
     $Precision = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}$
 
