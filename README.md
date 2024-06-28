@@ -5,14 +5,13 @@ This repository contains scripts and resources aimed at developing an AI-based s
 - [Features](#-features)
 - [Installation](#%EF%B8%8F-installation)
 - [Usage](#-usage)
-- [Metrics](#-metrics)
 - [Contributing](#-contributing)
 
 
 ## ✨ Features
 - Fetching dated images from an online camera every few seconds.
 - Retrieving images labelled on **Label Studio** from an exported file (different formats supported: JSON, COCO and YOLO).
-- Analysing images using different object detection models (YOLOv10, Faster R-CNN, SSD, Haar Cascade Classifier, MMOD).
+- Analysing fetched images using an object detection model (Mask R-CNN) to detect objects.
 - Displaying the results on a dashboard with multiple plots and filters.
 
 
@@ -43,14 +42,17 @@ Open a new terminal and follow these steps to set up the project:
 ## 🚀 Usage 
 > In Docker Desktop, you can view the containers with their status and logs.
 
-❗ *`VARIABLE`* means that this variable can be customized in the **.env** file.
-
 ### Production
-You can run the whole system using the following command:
+You can run the entire pipeline using the following command:
 ```bash
 docker-compose up -d fetcher object-detector dashboard
 ```
+
+> Keep reading if you want to understand each service and how to customize the configuration.
+
 ### Services
+
+*`VARIABLE`* means that this variable can be customized in the **.env** file.
 
 #### Fetcher
 You can fetch *`LOOP`* images, from a *`URL`*, every *`SLEEP_TIME`* seconds using the following command:
@@ -84,16 +86,6 @@ You can run the dashboard using the following command:
 ```bash
 docker-compose up -d dashboard
 ```
-
-## 📊 Metrics
-<!-- 
-|     Model                            | IoU  | Precision | Recall | F1 Score | AP | mAP<sup>50</sup>  | 
-| ------------------------------------ | :--: | :-------: | :----: | :------: | :---: | :---: | 
-| YOLOv10                              | 0.85 |   0.90    |  0.87  |   0.80   |
-| Faster R-CNN                         | 0.90 |   0.85    |  0.87  |   0.85   |
-| SSD (Single Shot MultiBox Detector)  | 0.80 |   0.95    |  0.87  |   0.75   |
-| Haar Cascade Classifier              | 0.75 |   0.80    |  0.77  |   0.70   |
-| MMOD (max-margin object-detection)   | 0.85 |   0.90    |  0.87  |   0.80   | -->
 
 
 ## 🤝 Contributing 
