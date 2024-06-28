@@ -4,7 +4,7 @@
 from datetime import datetime
 import json
 from os import listdir
-from os.path import dirname, join, realpath
+from os.path import dirname, isfile, join, realpath
 import time
 
 # Third-party imports
@@ -29,8 +29,15 @@ st.set_page_config(
 
 
 def load_data() -> pd.DataFrame:
-    with open(join(RESULTS_DIR, 'data.json'), 'r') as f:
-        data = json.loads(f.read())
+    if isfile(join(RESULTS_DIR, 'data.json')):
+        try:
+            with open(join(RESULTS_DIR, 'data.json'), 'r') as f:
+                data = json.loads(f.read())
+        except Exception as e:
+            print(f'Error: {e}')
+            data = {}
+    else:
+        data = {}
     df = pd.DataFrame.from_dict(data, orient='index')
     df = df.fillna(0)
     df.reset_index(inplace=True)
