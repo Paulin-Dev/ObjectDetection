@@ -37,3 +37,14 @@ JSON_images
 
 # Exported files
 *.json
+
+# Python 
+env/
+venv/
+__pycache__/
+
+# COCO dataset
+coco/
+
+# Results
+results/
