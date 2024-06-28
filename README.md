@@ -44,13 +44,20 @@ Open a new terminal and follow these steps to set up the project:
 
 ❗ *`VARIABLE`* means that this variable can be customized in the **.env** file.
 
-### Fetcher
+### Production
+You can run the whole system using the following command:
+```bash
+docker-compose up -d fetcher object-detector dashboard
+```
+### Services
+
+#### Fetcher
 You can fetch *`LOOP`* images, from a *`URL`*, every *`SLEEP_TIME`* seconds using the following command:
 ```bash
 docker-compose up -d fetcher
 ```
 
-### Retriever
+#### Retriever
 This assumes you are using [Label Studio](https://labelstud.io/) for labelling and that you have already uploaded and labelled your images.
 
 On **Label Studio**, in your project, you can find the *`PROJECT_ID`* in your browser URL. The *`ACCESS_TOKEN`* is visible in the "Account & Settings" tab (top right corner).
@@ -65,13 +72,13 @@ docker-compose up -d retriever
 > NB: Change the *`REQUEST_INTERVAL`* if you are being rate limited.  
 > Images will be downloaded to the "JSON_images" directory at the project's root for JSON format, and to the "images" directory within exported directories for COCO and YOLO formats.
 
-### Object Detector
+#### Object Detector
 You can run the detector using the following command:
 ```bash
 docker-compose up -d object-detector
 ```
 
-### Dashboard
+#### Dashboard
 You can run the dashboard using the following command:
 ```bash
 docker-compose up -d dashboard
