@@ -48,6 +48,8 @@ You can run the entire pipeline using the following command:
 docker-compose up -d fetcher object-detector dashboard
 ```
 
+You can now access the dashboard at [http://localhost:8080/](http://localhost:8080/).
+
 > Keep reading if you want to understand each service and how to customize the configuration.
 
 ### Services
